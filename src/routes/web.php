@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+/*仮）商品一覧ページを取得*/ 
+Route::get('/products', [ProductController::class, 'index']);
+
+/*登録画面を取得*/
+Route::get('/products/register', [ProductController::class, 'register']);
+
+/*登録を保存*/
+Route::post('/products', [ProductController::class, 'store']);
+
+/*詳細ページを取得*/
+Route::get('/products/{product_id}', [ProductController::class, 'show']);
+
+/*削除*/
+Route::post('/products/{product_id}/delete', [ProductController::class, 'destroy']);
+
+/*検索*/
+Route::post('/products/search', [ProductController::class, 'search']);

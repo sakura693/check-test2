@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    /* 全要素のマージンをリセット */
+    padding: 0;
+    /* 全要素のパディングをリセット */
+    box-sizing: border-box;
+    /* ボックスモデルをボーダーボックスに設定 */
+}
+
+html,
+body {
+    height: 100%;
+}
+
+textarea, input {
+    color: #000000;
+    border: 1px solid #c9beb4;
+    border-radius: 3px;
+    background: white;
+    padding: 10px 0 10px 5px;
+}
+
+textarea::placeholder,
+input::placeholder {
+    color: #c9beb4;
+    font-size: 11px;
+}
+
+.app{
+    display: flex;
+    height: 100%;
+    flex-direction: column; /*これでheadingとcontentを縦に並べた*/
+}
+
+/*ヘッダー*/
+.header {  
+    text-align: left;
+}
+
+.header-heading{
+    font-size: 15px;
+    color: rgb(250, 210, 7);
+    font-family: Dancing Script;
+    margin: 3px 0 3px 10px;
+}
+
+/*コンテンツ*/
+.content{
+    display: flex;
+    background: #eae8e6;
+    height: 150vh; /*100vhにするとサイズが足りないから適当に150くらいに設定*/
+}
+
+/*ボタン*/
+.btn {
+    display: block;
+    padding: 8px 32px;
+    border: none;
+    background: rgb(249, 209, 8);
+    color: black;
+    cursor: pointer;
+}
+
+/*ページネーション*/
+.pagination{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.pagination li:not(.active) {
+    background: white;
+    border-radius: 50%; /*円形にする*/
+}
+
+.pagination a {
+    color: black;
+    text-decoration: none;
+}
+
+.pagination_link{
+    text-decoration: none;
+}
+
+.active{
+    background: rgb(249, 209, 8);
+    border-radius: 50%;    /*円形にする*/
+    color: black;
+}
+
+/*ファイルを選択ボタン*/
+.file-btn {
+    background: none;
+    border: none;
+}
+

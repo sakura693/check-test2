@@ -1,0 +1,105 @@
+.detail-content{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.content-heading{
+    font-size: 12px;
+    margin: 35px 0 5px 0;
+}
+
+.index{
+    color: blue;
+    text-decoration: none;
+    margin-right: 3px;
+}
+
+.fruit-img{
+    width: 95%;
+    height: 80%;
+}
+
+.fruit-name{
+    margin-left: 3px;
+}
+
+.detail-form{
+    border: 2px solid orange;
+}
+
+
+.detail-form__upper {
+    border: 2px solid red;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /*上段部分を２つに分ける*/
+    margin-bottom: 20px;
+    height: 300px;
+}
+
+.detail-form__group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.detail-form__label {
+    font-size: 14px;
+}
+
+.detail-form__input{
+    width: 100%;
+}
+
+/*オプションボタン*/
+.detail-form__option-inner {
+    display: flex;
+    gap: 50px;
+    font-size: 15px;
+}
+
+.detail-form__option {
+    display: flex;
+    gap: 10px;
+}
+
+
+/*テキストエリア*/
+.detail-form__textarea {
+    height: 100px;
+    width: 100%;
+    resize: none; /*textareaのデフォの斜線を消す*/
+    line-height: 1.5; /*textarea内の行間を開ける*/
+    font-size: 11px;
+}
+
+
+
+.detail-form__btn-inner {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+.detail-form__back-btn {
+    background: #d0cfcd;
+    width: 150px;
+    text-decoration: none;
+    font-size: 13px;
+    text-align: center;
+}
+
+.detail-form__update_btn {
+    width: 150px;
+}
+
+.detail-form__error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
