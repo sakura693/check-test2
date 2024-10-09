@@ -1,10 +1,7 @@
 * {
     margin: 0;
-    /* 全要素のマージンをリセット */
     padding: 0;
-    /* 全要素のパディングをリセット */
     box-sizing: border-box;
-    /* ボックスモデルをボーダーボックスに設定 */
 }
 
 html,
@@ -29,10 +26,9 @@ input::placeholder {
 .app{
     display: flex;
     height: 100%;
-    flex-direction: column; /*これでheadingとcontentを縦に並べた*/
+    flex-direction: column; 
 }
 
-/*ヘッダー*/
 .header {  
     text-align: left;
 }
@@ -40,18 +36,15 @@ input::placeholder {
 .header-heading{
     font-size: 15px;
     color: rgb(250, 210, 7);
-    font-family: Dancing Script;
     margin: 3px 0 3px 10px;
 }
 
-/*コンテンツ*/
 .content{
     display: flex;
     background: #eae8e6;
-    height: 150vh; /*100vhにするとサイズが足りないから適当に150くらいに設定*/
+    height: 150vh; 
 }
 
-/*ボタン*/
 .btn {
     display: block;
     padding: 8px 32px;
@@ -61,7 +54,6 @@ input::placeholder {
     cursor: pointer;
 }
 
-/*ページネーション*/
 .pagination{
     display: flex;
     justify-content: center;
@@ -70,7 +62,7 @@ input::placeholder {
 
 .pagination li:not(.active) {
     background: white;
-    border-radius: 50%; /*円形にする*/
+    border-radius: 50%; 
 }
 
 .pagination a {
@@ -84,11 +76,10 @@ input::placeholder {
 
 .active{
     background: rgb(249, 209, 8);
-    border-radius: 50%;    /*円形にする*/
+    border-radius: 50%;    
     color: black;
 }
 
-/*ファイルを選択ボタン*/
 .file-btn {
     background: none;
     border: none;

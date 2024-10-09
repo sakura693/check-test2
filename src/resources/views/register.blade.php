@@ -25,9 +25,11 @@
             </label>
             <input class="register-form__input" type="text" name="price" id="price" value="{{ old('price') }}" placeholder="値段を入力">
             <p class="register-form__error-message">
-                @error('price')
-                {{ $message }}
-                @enderror
+                @if ($errors->has('price'))
+                    @foreach ($errors->get('price') as $error)
+                        <div class="error-message">{{ $error }}</div>
+                    @endforeach
+                @endif
             </p>
         </div>
 
@@ -35,10 +37,8 @@
             <label class="register-form__label" for="price">商品画像<span class="register-form__required">必須</span>
             </label>
 
-            <!--ファイルを選択ボタン-->
             <input class="file-btn" type="file" name="image">
             <p class="register-form__error-message">
-                <!--⇩分らん-->
                 @error('image')
                 {{ $message }}
                 @enderror
@@ -61,7 +61,7 @@
                 @endforeach
             </div>
             <p class="register-form__error-message">
-                @error('season')
+                @error('seasons')
                 {{ $message }}
                 @enderror
             </p>
@@ -72,9 +72,11 @@
             </label>
             <textarea class="register-form__textarea" name="description" id="" placeholder="商品の説明を入力">{{ old('description') }}</textarea>
             <p class="register-form__error-message">
-                @error('description')
-                {{ $message }}
-                @enderror
+                @if ($errors->has('description'))
+                    @foreach ($errors->get('description') as $error)
+                        <div class="error-message">{{ $error }}</div>
+                    @endforeach
+                @endif
             </p>
         </div>
 

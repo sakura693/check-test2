@@ -45,9 +45,11 @@
                     <label class="detail-form__label" for="price">値段</label>
                     <input class="detail-form__input" type="text" name="price" id="price" value="{{ $product->price }}" placeholder="値段を入力">
                     <p class="detail-form__error-message">
-                        @error('price')
-                        {{ $message }}
-                        @enderror
+                        @if ($errors->has('price'))
+                            @foreach ($errors->get('price') as $error)
+                                <div class="error-message">{{ $error }}</div>
+                            @endforeach
+                        @endif
                     </p>
                 </div>
 
@@ -63,7 +65,7 @@
                         @endforeach
                     </div>
                     <p class="detail-form__error-message">
-                        @error('season')
+                        @error('seasons')
                         {{ $message }}
                         @enderror
                     </p>
@@ -76,9 +78,11 @@
             <label class="detail-form__label" for="price">商品説明</label>
             <textarea class="detail-form__textarea" name="description" id="" placeholder="商品の説明を入力">{{ $product->description }}</textarea> <!--※ここでは$がいる-->
             <p class="detail-form__error-message">
-                @error('description')
-                {{ $message }}
-                @enderror
+                @if ($errors->has('description'))
+                    @foreach ($errors->get('description') as $error)
+                        <div class="error-message">{{ $error }}</div>
+                    @endforeach
+                @endif
             </p>
         </div>
 

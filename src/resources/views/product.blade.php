@@ -2,7 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/product.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><!--awesom font-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 @endsection
 
 @section('content')
@@ -20,7 +20,6 @@
                     <input class="search-form__keyword-input" type="text" name="keyword" placeholder="商品名で検索" value="{{ request('keyword') }}">
                     <input class="search-form__btn btn" type="submit" value="検索">
            
-                    <!--ソート機能-->
                     <div class="product-sort">
                         <label class="product-sort__label">価格順で表示</label>
                         <select class="sort-select" name="sort">
@@ -60,7 +59,7 @@
                 </div>
 
             </div>
-            <!--ページネーション-->
+
             <div class="pagination">
                 {{ $products->links() }}
             </div>

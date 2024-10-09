@@ -36,6 +36,7 @@ label{
 
 /*ファイルボタンのcssはcommonに記述する*/
 
+
 .register-form_message{
     color: red;
     font-size: 10px;
@@ -59,8 +60,6 @@ label{
     resize: none; /*textareaのデフォの斜線を消す*/
     font-size: 11px;
 }
-
-
 
 /*ボタン*/
 .register-form__btn-inner{
@@ -88,4 +87,11 @@ label{
     color: red;
     font-size: 12px;
     margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.error-message{
+    color: red;
+    font-size: 12px;
 }

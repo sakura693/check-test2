@@ -80,7 +80,7 @@
 }
 
 .sort-select{
-    position: relative; /*▼作成用*/
+    position: relative; 
     width: 100%;
     padding: 10px 0;
     color: #c9beb4;
@@ -88,13 +88,11 @@
     border: 1px solid #c9beb4;
     padding-left: 10px;
 
-    /*⇩デフォのプルダウンマークを削除*/
-    -webkit-appearance: none; /* Safari, Chrome */
-    -moz-appearance: none; /* Firefox */
-    appearance: none; /* 標準ブラウザ */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
-/*プルダウンの三角形（なぜか適用されない(´;ω;｀)）*/
 .sort-select::after{
     position: absolute;
     top: 50%;
@@ -127,9 +125,8 @@
     border-radius: 5px;
     height: 100%;
 
-    /*⇩２つはテキストの下線と色の設定*/
     text-decoration: none !important;
-    color: inherit; /* 親要素の色を継承 */
+    color: inherit; 
 }
 
 .product-card__img-wrapper{
@@ -154,7 +151,6 @@
 }
 
 svg.w-5.h-5 {
-    /*paginateメソッドの矢印の大きさ調整のために追加*/
     width: 30px;
     height: 30px;
 }
