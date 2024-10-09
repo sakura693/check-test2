@@ -14,7 +14,6 @@
 
     <div class="product-content">
         <form class="search-form" action="/products/search" method="get">
-            @csrf
             <div class="search-form__content">
 
                 <!--左側の機能-->
@@ -42,7 +41,7 @@
                         
                         <a class="product-card" href="/products/{{ $product->id }}">
                             <div class="product-card__img-wrapper">
-                                <img class="product-card__img" src="{{ asset('storage/fruits-img/' . $product->image) }}" alt="{{ $product->name }}">
+                                <img class="product-card__img" src="{{ asset( $product->image ) }}" alt="{{ $product->name }}">
                             </div>
                             <div class="product-body">
                                 <p class="product-name">{{ $product->name }}</p>

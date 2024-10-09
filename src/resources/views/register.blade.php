@@ -25,7 +25,6 @@
             </label>
             <input class="register-form__input" type="text" name="price" id="price" value="{{ old('price') }}" placeholder="値段を入力">
             <p class="register-form__error-message">
-                <!--ifとかforeachとか使ったほうがいいかも-->
                 @error('price')
                 {{ $message }}
                 @enderror

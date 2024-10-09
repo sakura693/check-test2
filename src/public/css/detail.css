@@ -23,13 +23,7 @@
     margin-left: 3px;
 }
 
-.detail-form{
-    border: 2px solid orange;
-}
-
-
 .detail-form__upper {
-    border: 2px solid red;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     /*上段部分を２つに分ける*/

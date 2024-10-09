@@ -24,14 +24,24 @@ class ProductController extends Controller
     /*今のままだとエラーメッセージが一つしか出力されない*/
     public function store(ProductRequest $request){
         $products = $request->all();
-        
+
         // 画像を保存する処理
         if($request->hasFile('image')){
-            $path = $request->file('image')->store('images', 'public');
-            $products['image_path'] = $path;
+            $path = $request->file('image')->store('fruits-img', 'public');
+
+            $urlPath = str_replace('public/', '', $path);
+            $urlPath = 'storage/' . $urlPath;
+
+            $products['image'] = $urlPath;
         }
 
-        Product::create($products);
+        $product = Product::create($products);
+
+        /*seasonsの関連付けを行う*/
+        if ($request->has('seasons')){
+            $product->seasons()->attach($request->input('seasons'));
+        }
+
         return redirect('/products'); /*ビューファイル名（ product.blade.php）は必ずURLに直接対応するわけではないからルート（/products）で書いた方が確実かみたい！*/
     }
 
@@ -46,32 +56,39 @@ class ProductController extends Controller
     }
 
     /*削除機能*/
-    public function destroy(Request $request){
-        Product::find($request->id)->delete();
-        return redirect('/products');
+    public function destroy(Request $request, $product_id){
+        $product = Product::find($product_id);
+        $product->delete();
+        return redirect('products');
     }
 
+    /*更新機能*/
+    public function update(ProductRequest $request, $product_id){
+        $data = $request->all();
 
-
-
-
-    /*これ必要？？*/
-    public function search(Request $request){
-        $query = Product::query();
-
-        $query = $this->getSearchQuery($request, $query);
-        
-        return view('search', compact('products'));
-    }
-
-    /*これも必要？？検索機能（仮）*/
-    private function getSearchQuery($request, $query)
-    {
-        if(!empty($request->keyword)){
-            $query->where('keyword', 'like', '%' . $request->keyword . '%');
+        if($request->hasFile('image')){
+            $path = $request->file('image')->store('images', 'public');
+            $data['image_path'] = $path;
         }
 
-        return $query;
+        $product = Product::find($product_id);
+        $product->update($data);
+        return redirect('products');
     }
+
+
+
+    /*検索*/
+    public function search(Request $request)
+    {
+        $products = Product::with('seasons')->ProductSearch($request->id)
+        ->KeywordSearch($request->keyword)
+        ->paginate(6);
+        
+        return view('product', compact('products'));
+    }
+
+
+   
 }
 

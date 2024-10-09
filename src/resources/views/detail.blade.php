@@ -10,9 +10,8 @@
         <a class="index" href="/products">商品一覧</a>><span class="fruit-name">{{ $product->name }}</span>
     </div>
 
-    <form class="detail-form" action="" method="post">
+    <form class="detail-form" action="/products/{{ $product->id }}/update" method="post" enctype="multipart/form-data">
         @csrf
-
         <!--ファイルから季節までの部分-->
         <div class="detail-form__upper">
             <!--ファイル部分-->
@@ -55,7 +54,6 @@
                 <div class="detail-form__group">
                     <label class="detail-form__label" for="season">季節</label>
                     <div class="detail-form__option-inner">
-                    <!--一旦保留-->
                         @foreach($seasons as $season)
                         <div class="detail-form__option">
                             <input type="checkbox" name="seasons[]" value="{{ $season->id }}" {{ in_array($season->id, $selectedSeasonIds) ? 'checked' : '' }}>
@@ -83,22 +81,19 @@
             </p>
         </div>
 
-
-
         <div class="detail-form__btn-inner">
             <a class="detail-form__back-btn btn"  href="/products">戻る</a>
             <input class="detail-form__update-btn btn" type="submit" value="変更を保存" name="update">
-
-            <!--削除ボタン-->
             <input type="hidden" name="id" value="{{ $product->id }}">
-            <input class="delete-btn" type="submit" value="削除">
         </div>
         
     </form>
-    
 
-
-
-
+    <!--削除ボタン-->
+    <form action="/products/{{ $product->id }}/delete" method="post">
+        @csrf
+        <input class="delete-btn" type="submit" value="削除">
+        <input type="hidden" name="id" value="{{ $product->id }}">
+    </form>
 </div>
 @endsection
