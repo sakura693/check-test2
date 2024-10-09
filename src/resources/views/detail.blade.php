@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><!--awesom font-->
 @endsection
 
 @section('content')
@@ -11,16 +12,16 @@
     </div>
 
     <form class="detail-form" action="/products/{{ $product->id }}/update" method="post" enctype="multipart/form-data">
+        @method('PATCH')
         @csrf
         <!--ファイルから季節までの部分-->
         <div class="detail-form__upper">
             <!--ファイル部分-->
             <div class="detail-form__left">
-                <div class="detail-form__group">
-                    <img class="fruit-img" src="{{ asset('storage/fruits-img/' . $product->image) }}" alt="{{ $product->name }}">
-                    <input class="file-btn" type="file">
+                <div class="detail-form__group fruit-group">
+                    <img class="fruit-img" src="{{ asset( $product->image) }}" alt="{{ $product->name }}">
+                    <input class="file-btn" type="file" name="image">
                     <p class="detail-form__error-message">
-                        <!--⇩分らん-->
                         @error('image')
                         {{ $message }}
                         @enderror
@@ -85,15 +86,14 @@
             <a class="detail-form__back-btn btn"  href="/products">戻る</a>
             <input class="detail-form__update-btn btn" type="submit" value="変更を保存" name="update">
             <input type="hidden" name="id" value="{{ $product->id }}">
-        </div>
-        
+        </div>        
     </form>
 
     <!--削除ボタン-->
-    <form action="/products/{{ $product->id }}/delete" method="post">
+    <form class="delete-btn__form" action="/products/{{ $product->id }}/delete" method="post">
         @csrf
-        <input class="delete-btn" type="submit" value="削除">
-        <input type="hidden" name="id" value="{{ $product->id }}">
+        <input type="hidden" name="id" value="{{ $product->id }}">    
+        <button class="delete-btn" type="submit"><i class="fa-solid fa-trash-can fa-lg" style="color: #ff0a0a;"></i></i></button>
     </form>
 </div>
 @endsection

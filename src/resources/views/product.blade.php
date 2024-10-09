@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/product.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><!--awesom font-->
 @endsection
 
 @section('content')
@@ -15,27 +16,33 @@
     <div class="product-content">
         <form class="search-form" action="/products/search" method="get">
             <div class="search-form__content">
-
-                <!--左側の機能-->
                 <div class="product-content__left-column">
-                    <!--検索機能-->
                     <input class="search-form__keyword-input" type="text" name="keyword" placeholder="商品名で検索" value="{{ request('keyword') }}">
-                    <!--検索ボタン-->
                     <input class="search-form__btn btn" type="submit" value="検索">
            
                     <!--ソート機能-->
                     <div class="product-sort">
                         <label class="product-sort__label">価格順で表示</label>
-                        <select class="sort-select">
-                            <option value="up">高い順に表示</option>
-                            <option value="down">低い順に表示</option>
+                        <select class="sort-select" name="sort">
+                            <option disabled selected>価格で並べ替え</option>
+                            <option value="up" {{ request('sort') === 'up' ? 'selected' : '' }}>高い順に表示</option>
+                            <option value="down" {{ request('sort') === 'down' ? 'selected' : ''}}>低い順に表示</option>
                         </select>
+                        
+                        <div class="sort-tag">
+                            @if(request('sort'))
+                            <input type="hidden" name="reset">
+                            <button class="sort-tag__reset" type="submit">{{ request('sort') === 'up' ? '高い順に表示' : (request('sort') === 'down' ? '低い順に表示' : '') }}
+                                <div class='x-icon'>
+                                    <i class="fa-regular fa-circle-xmark fa-lg" style="color: #fbd40e;"></i>
+                                </div>
+                            </button>
+                            @endif
+                        </div>
                     </div>
                 </div>    
         
-                <!--写真の部分-->
                 <div class="product-content__group">
-                    <!--商品一覧をgridで表示-->
                     <div class="product-cards">
                         @foreach($products as $product)
                         

@@ -36,6 +36,21 @@
     height: 80%;
 }
 
+.sort-tag__reset{
+    border: 2px solid #fbd40e;
+    border-radius: 20px;
+    padding: 8px;
+    background: #eae8e6;
+    font-size: 11px;
+    margin-top: 15px;
+    display: flex;
+}
+
+.x-icon{
+    margin-left: 10px;
+    margin-top: 1px;
+}
+
 .product-content__left-column {
     width: 20%;
     margin: 0 30px;
@@ -100,6 +115,7 @@
 
 .product-cards{
     display: grid;
+    grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     height: 100%;
@@ -125,7 +141,6 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    
 }
 
 .product-body{

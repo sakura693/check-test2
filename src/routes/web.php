@@ -34,6 +34,6 @@ Route::get('/products/{product_id}', [ProductController::class, 'show']);
 Route::post('/products/{product_id}/delete', [ProductController::class, 'destroy']);
 
 /*更新*/
-Route::post('/products/{product_id}/update', [ProductController::class, 'update']);
+Route::patch('/products/{product_id}/update', [ProductController::class, 'update']);
 
 

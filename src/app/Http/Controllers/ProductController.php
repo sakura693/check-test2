@@ -10,11 +10,33 @@ use App\Models\Product_Season;
 
 class ProductController extends Controller
 {
-    public function index(){
-        $products = Product::all();
+    public function index(Request $request){
         $products = Product::Paginate(6);
         return view('product', compact('products'));
     } 
+
+    /*検索*/
+    public function search(Request $request)
+    {
+        $sort = $request->input('sort'); /*sortはviewファイルのselectタグ内のnameでつけた名前*/
+        $productsQuery = Product::with('seasons')->ProductSearch($request->id)
+        ->KeywordSearch($request->keyword);
+
+        if ($request->has('reset')){
+            return redirect('/products')->withInput();
+        }
+
+        if ($sort === 'up'){
+            $productsQuery->orderBy('price', 'desc');
+        }elseif($sort === 'down'){
+            $productsQuery->orderBy('price', 'asc');
+        }
+
+        $products = $productsQuery->paginate(6);
+        
+        return view('product', compact('products', 'sort'));
+    }
+
 
     public function register(){
         $seasons = Season::all();
@@ -64,30 +86,22 @@ class ProductController extends Controller
 
     /*更新機能*/
     public function update(ProductRequest $request, $product_id){
-        $data = $request->all();
+        $form = $request->all();
+        
+        $product = Product::find($product_id);
 
-        if($request->hasFile('image')){
-            $path = $request->file('image')->store('images', 'public');
-            $data['image_path'] = $path;
+         // 新しい画像を保存し正しいURLを生成
+        if ($request->hasfile('image')){
+            $form['image'] = $request->file('image')->store('fruits-img', 'public');
+            $form['image'] = 'storage/' . str_replace('public/', '', $form['image']);
+        }else {
+            $form['image'] = $product->image;
         }
 
-        $product = Product::find($product_id);
-        $product->update($data);
+        $product->update($form);  //既存の画像をそのまま使う
+
         return redirect('products');
     }
-
-
-
-    /*検索*/
-    public function search(Request $request)
-    {
-        $products = Product::with('seasons')->ProductSearch($request->id)
-        ->KeywordSearch($request->keyword)
-        ->paginate(6);
-        
-        return view('product', compact('products'));
-    }
-
 
    
 }

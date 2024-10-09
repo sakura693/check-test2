@@ -14,15 +14,6 @@
     margin-right: 3px;
 }
 
-.fruit-img{
-    width: 95%;
-    height: 80%;
-}
-
-.fruit-name{
-    margin-left: 3px;
-}
-
 .detail-form__upper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -33,6 +24,19 @@
 
 .detail-form__group {
     margin-bottom: 20px;
+}
+
+.fruit-group{
+    height: 100%;
+}
+
+.fruit-img {
+    width: 95%;
+    height: 80%;
+}
+
+.fruit-name {
+    margin-left: 3px;
 }
 
 label {
@@ -77,7 +81,6 @@ label {
     gap: 20px;
     justify-content: center;
     margin-top: 25px;
-    margin-bottom: 50px;
 }
 
 .detail-form__back-btn {
@@ -97,3 +100,17 @@ label {
     font-size: 12px;
     margin-top: 5px;
 }
+
+.delete-btn__form{
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: right;
+    margin-top: -25px;
+    margin-right: 20px;
+}
+
+.delete-btn{
+    cursor: pointer;
+    border: none;
+}
+
