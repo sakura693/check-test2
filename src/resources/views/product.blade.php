@@ -8,9 +8,17 @@
 @section('content')
 <div class="container">
     <div class="container-heading">
-        <h2 class="container-heading__text">商品一覧</h2>
+        <h2 class="container-heading__text">
+            @if(request()->has('keyword') && request()->query('keyword') !== null)
+                "{{ request()->query('keyword') }}"の商品一覧
+            @else
+                商品一覧
+            @endif    
+        </h2>
 
-        <a class="add-btn btn" href="/products/register">+ 商品を追加</a>
+        @if((!request()->has('keyword') || request()->query('keyword') === null)) 
+            <a class="add-btn btn" href="/products/register">+ 商品を追加</a>
+        @endif
     </div>
 
     <div class="product-content">
@@ -23,7 +31,7 @@
                     <div class="product-sort">
                         <label class="product-sort__label">価格順で表示</label>
                         <select class="sort-select" name="sort">
-                            <option disabled selected>価格で並べ替え</option>
+                            <option class="sort-select__text" disabled selected>価格で並べ替え</option>
                             <option value="up" {{ request('sort') === 'up' ? 'selected' : '' }}>高い順に表示</option>
                             <option value="down" {{ request('sort') === 'down' ? 'selected' : ''}}>低い順に表示</option>
                         </select>

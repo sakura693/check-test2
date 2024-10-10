@@ -1,6 +1,6 @@
 .register-content{
     width: 50%;
-    margin: 0 auto; /*水平方向に中央寄せ*/
+    margin: 0 auto; 
 }
 
 .register-content_heading{
@@ -34,9 +34,6 @@ label{
     width: 100%;
 }
 
-/*ファイルボタンのcssはcommonに記述する*/
-
-
 .register-form_message{
     color: red;
     font-size: 10px;
@@ -53,15 +50,13 @@ label{
     gap: 10px;
 }
 
-/*テキストエリア*/
 .register-form__textarea{
     height: 100px;
     width: 100%;
-    resize: none; /*textareaのデフォの斜線を消す*/
+    resize: none; 
     font-size: 11px;
 }
 
-/*ボタン*/
 .register-form__btn-inner{
     display: flex;
     gap: 20px;
@@ -70,7 +65,6 @@ label{
     margin-bottom: 50px;
 }
 
-/*影つける？*/
 .register-form__back-btn{
     background: #d0cfcd;
     width: 150px;

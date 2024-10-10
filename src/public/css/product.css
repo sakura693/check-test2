@@ -99,9 +99,9 @@
     right: 8%;
     width: 0;
     height: 0;
-    border-top: 12px solid #c9beb4;
-    border-right: 8px solid transparent;
-    border-left: 8px solid transparent;
+    border-top: 8px solid #aea59c !important;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
     transform: translateY(-50%);
     content: "";
 }
@@ -154,4 +154,3 @@ svg.w-5.h-5 {
     width: 30px;
     height: 30px;
 }
-

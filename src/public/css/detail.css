@@ -17,7 +17,6 @@
 .detail-form__upper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /*上段部分を２つに分ける*/
     margin-bottom: 20px;
     height: 300px;
 }
@@ -52,7 +51,6 @@ label {
     width: 100%;
 }
 
-/*オプションボタン*/
 .detail-form__option-inner {
     display: flex;
     gap: 50px;
@@ -64,13 +62,11 @@ label {
     gap: 10px;
 }
 
-
-/*テキストエリア*/
 .detail-form__textarea {
     height: 100px;
     width: 100%;
-    resize: none; /*textareaのデフォの斜線を消す*/
-    line-height: 1.5; /*textarea内の行間を開ける*/
+    resize: none; 
+    line-height: 1.5;
     font-size: 11px;
 }
 

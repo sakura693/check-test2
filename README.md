@@ -1,8 +1,5 @@
 # check-test2
 
-また再度確認しよう！！(特にER図の部分！！)
-
-
 ## 環境構築
 Dockerビルド：
     docker-compose up -d —build

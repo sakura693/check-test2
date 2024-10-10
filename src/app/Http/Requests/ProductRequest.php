@@ -23,7 +23,6 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
-        /*登録ページ*/
         if ($this->route('/products/register')){
             return [
                 'name' => 'required',
@@ -33,7 +32,6 @@ class ProductRequest extends FormRequest
                 'description' => 'required | max:120'
             ];
         }else {
-            /*詳細ページ*/
             return [
                 'name' => 'required',
                 'price' => 'required | numeric | min:0 | max:1000',
@@ -50,7 +48,6 @@ class ProductRequest extends FormRequest
             $price = $this->input('price');
             $description = $this->input('description');
 
-            // 空の場合のバリデーション
             if ($price === null || $price === '') {
                 $validator->errors()->add('price', '値段を入力してください');
                 $validator->errors()->add('price', '数値で入力してください');
@@ -63,8 +60,8 @@ class ProductRequest extends FormRequest
 
             if (empty($description)) {
                 $validator->errors()->add('description', '商品説明を入力してください');
-                $validator->errors()->add('description', '120文字以内で入力してください');
-            } elseif (strlen($description) > 120) {
+                $validator->errors()->add('description', '商品説明を入力してください');
+            } elseif (mb_strlen($description) > 120) {
                 $validator->errors()->add('description', '120文字以内で入力してください');
             }
         });

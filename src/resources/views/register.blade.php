@@ -53,8 +53,6 @@
             <div class="register-form__option-inner">
                 @foreach($seasons as $season)
                 <div class="register-form__option">
-                    <!--checkbox：複数選択
-                    in_array：戻っても内容が保持される設定。seasonモデルからidを取り出し'seasons'(inputのnameで指定した名前なだけでcheckboxの値を表す)にそのidが含まれるか確認。含まれてればtrueを返しcheckeにする-->
                     <input type="checkbox" name="seasons[]" value="{{ $season->id }}" {{ in_array($season->id, old('seasons', [])) ? 'checked' : '' }}> 
                     <label>{{ $season->name }}</label>
                 </div>
@@ -80,7 +78,6 @@
             </p>
         </div>
 
-        <!--ボタン-->
         <div class="register-form__btn-inner">
             <a class="register-form__back-btn btn"  href="/products">戻る</a>
             <input class="register-form__register-btn btn" type="submit" value="登録" name="register">

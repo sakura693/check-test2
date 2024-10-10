@@ -2,7 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><!--awesom font-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 @endsection
 
 @section('content')
@@ -14,9 +14,7 @@
     <form class="detail-form" action="/products/{{ $product->id }}/update" method="post" enctype="multipart/form-data">
         @method('PATCH')
         @csrf
-        <!--ファイルから季節までの部分-->
         <div class="detail-form__upper">
-            <!--ファイル部分-->
             <div class="detail-form__left">
                 <div class="detail-form__group fruit-group">
                     <img class="fruit-img" src="{{ asset( $product->image) }}" alt="{{ $product->name }}">
@@ -29,7 +27,6 @@
                 </div>
             </div>
 
-            <!--商品名から季節までの部分-->
             <div class="detail-form__right">
                 <div class="detail-form__group">
                     <label class="detail-form__label" for="name">商品名</label>
@@ -53,14 +50,13 @@
                     </p>
                 </div>
 
-                <!--とりま保留（product_idのseasonを取得しcheckedにする-->
                 <div class="detail-form__group">
                     <label class="detail-form__label" for="season">季節</label>
                     <div class="detail-form__option-inner">
                         @foreach($seasons as $season)
                         <div class="detail-form__option">
-                            <input type="checkbox" name="seasons[]" value="{{ $season->id }}" {{ in_array($season->id, $selectedSeasonIds) ? 'checked' : '' }}>
-                            <label>{{ $season->name }}</label>
+                            <input class="detail-form__option-input" type="checkbox" name="seasons[]" value="{{ $season->id }}" {{ in_array($season->id, $selectedSeasonIds) ? 'checked' : '' }}>
+                            <label class="season-name">{{ $season->name }}</label>
                         </div>
                         @endforeach
                     </div>
@@ -76,7 +72,7 @@
 
         <div class="detail-form__group">
             <label class="detail-form__label" for="price">商品説明</label>
-            <textarea class="detail-form__textarea" name="description" id="" placeholder="商品の説明を入力">{{ $product->description }}</textarea> <!--※ここでは$がいる-->
+            <textarea class="detail-form__textarea" name="description" id="" placeholder="商品の説明を入力">{{ $product->description }}</textarea>
             <p class="detail-form__error-message">
                 @if ($errors->has('description'))
                     @foreach ($errors->get('description') as $error)
@@ -93,7 +89,6 @@
         </div>        
     </form>
 
-    <!--削除ボタン-->
     <form class="delete-btn__form" action="/products/{{ $product->id }}/delete" method="post">
         @csrf
         <input type="hidden" name="id" value="{{ $product->id }}">    
